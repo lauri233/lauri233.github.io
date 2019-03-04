@@ -126,6 +126,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hello-golang" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/04/hello-golang/">hello-golang</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/04/hello-golang/" class="archive-article-date">
+  	<time datetime="2019-03-04T03:21:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Open-GoDocServer"><a href="#Open-GoDocServer" class="headerlink" title="Open GoDocServer"></a>Open GoDocServer</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>After installation, set up enviroment variables, GOPATH (E:\GoWorkspace), GOROOT (E:\Go).</p>
+<h2 id="How-to-Write-Go-Code"><a href="#How-to-Write-Go-Code" class="headerlink" title="How to Write Go Code"></a>How to Write Go Code</h2><p>code.html located in GOROOT.</p>
+<p>import paths, program, library…</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">go env</span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> E:\GoWorkspace\src\github.com\user\hello</span><br><span class="line"><span class="built_in">cd</span> /d E:\GoWorkspace\src\github.com\user\hello</span><br><span class="line">go install</span><br><span class="line"><span class="built_in">cd</span> /d E:\GoWlrkspace\bin</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> E:\GoWorkspace\src\github.com\user\stringutil</span><br><span class="line">go build github.com\user\stringutil</span><br><span class="line">go install github.com\user\hello</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line">go test github.com\user\stringutil</span><br><span class="line"></span><br><span class="line">go get github.com/golang/example/hello</span><br></pre></td></tr></table></figure>
+<p>What’s next…</p>
+<h2 id="A-Tour-of-Go"><a href="#A-Tour-of-Go" class="headerlink" title="A Tour of Go"></a>A Tour of Go</h2><p><a href="https://tour.go-zh.org/welcome/1" target="_blank" rel="noopener">A Chinese version</a></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h1><ul>
+<li><a href="http://c.biancheng.net/golang/" target="_blank" rel="noopener">http://c.biancheng.net/golang/</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hello-first-blog" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -149,7 +217,7 @@
         <p>A <a href="https://www.jianshu.com/p/21c94eb7bcd1" target="_blank" rel="noopener">blog</a> helps to post this first blog. </p>
 <h2 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h2><p>Open Git Bash.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> f:/OneDrive/Hexo</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">'hello-first-blog'</span></span><br></pre></td></tr></table></figure>
-<p>Write markdown in the fold named source_posts\hello-first-blog.md<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
+<p>Write markdown (<a href="https://www.markdownguide.org/cheat-sheet" target="_blank" rel="noopener">a markdown cheat sheet</a>) in the fold named source\_posts\hello-first-blog.md<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure></p>
 <p>or just<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g -d</span><br></pre></td></tr></table></figure></p>
 <p>open the server<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure></p>
 <p>Now can open <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> or go to <a href="https://lauri233.github.io" target="_blank" rel="noopener">https://lauri233.github.io</a></p>
