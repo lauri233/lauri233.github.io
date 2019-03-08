@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="Ahaha">
 <meta property="og:description" content="PyTorch TutorialsDeep Learning with PyTorch: A 60 Minute BlitzWhat is PyTorch? A replacement for NumPy to use the power of GPUs a deep learning research platform that provides maximum flexibility and">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-08T03:09:44.872Z">
+<meta property="og:updated_time" content="2019-03-08T03:20:24.324Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hello-pytorch">
 <meta name="twitter:description" content="PyTorch TutorialsDeep Learning with PyTorch: A 60 Minute BlitzWhat is PyTorch? A replacement for NumPy to use the power of GPUs a deep learning research platform that provides maximum flexibility and">
@@ -152,6 +152,7 @@
 <li>A replacement for NumPy to use the power of GPUs</li>
 <li>a deep learning research platform that provides maximum flexibility and speed</li>
 </ul>
+<a id="more"></a>
 <h4 id="Tensors"><a href="#Tensors" class="headerlink" title="Tensors"></a>Tensors</h4><h3 id="Autograd-Automatic-Differentiation"><a href="#Autograd-Automatic-Differentiation" class="headerlink" title="Autograd: Automatic Differentiation"></a>Autograd: Automatic Differentiation</h3><p><code>autograd</code> package, <code>.requires_grad=True</code>, <code>.grad_fn</code> attribute </p>
 <p><code>Tensor</code> and <code>Function</code> are interconnected and build up an acyclic graph, that encodes a complete history of computation. Each tensor has a <code>.grad_fn</code> attribute that references a <code>Function</code> that has created the <code>Tensor</code> (except for Tensors created by the user - their <code>grad_fn is None</code>)</p>
 <p>If you want to compute the derivatives, you can call <code>.backward()</code> on a <code>Tensor</code>. If <code>Tensor</code> is a scalar (i.e. it holds a one element data), you don’t need to specify any arguments to <code>backward()</code>, however if it has more elements, you need to specify a <code>gradient</code> argument that is a tensor of matching shape.</p>
