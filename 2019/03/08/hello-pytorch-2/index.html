@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2019/3 | Ahaha</title>
+  <title>hello-pytorch-2 | Ahaha</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Ahaha">
-<meta property="og:url" content="http://yoursite.com/archives/2019/03/index.html">
+  <meta name="description" content="PyTorch TutorialsTransfer Learning Tutorial">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hello-pytorch-2">
+<meta property="og:url" content="http://yoursite.com/2019/03/08/hello-pytorch-2/index.html">
 <meta property="og:site_name" content="Ahaha">
+<meta property="og:description" content="PyTorch TutorialsTransfer Learning Tutorial">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-08T05:59:49.917Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ahaha">
+<meta name="twitter:title" content="hello-pytorch-2">
+<meta name="twitter:description" content="PyTorch TutorialsTransfer Learning Tutorial">
   
     <link rel="alternative" href="/atom.xml" title="Ahaha" type="application/atom+xml">
   
@@ -124,103 +128,145 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-hello-pytorch-2" class="article article-type-post " itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      hello-pytorch-2
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/08/hello-pytorch-2/" class="archive-article-date">
+
+        
+        <a href="/2019/03/08/hello-pytorch-2/" class="archive-article-date">
   	<time datetime="2019-03-08T05:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-08</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/08/hello-pytorch-2/">hello-pytorch-2</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="PyTorch-Tutorials"><a href="#PyTorch-Tutorials" class="headerlink" title="PyTorch Tutorials"></a>PyTorch Tutorials</h1><h2 id="Transfer-Learning-Tutorial"><a href="#Transfer-Learning-Tutorial" class="headerlink" title="Transfer Learning Tutorial"></a><a href="https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html" target="_blank" rel="noopener">Transfer Learning Tutorial</a></h2><a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> __future__ <span class="keyword">import</span> print_function, division</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.optim <span class="keyword">as</span> optim</span><br><span class="line"><span class="keyword">from</span> torch.optim <span class="keyword">import</span> lr_scheduler</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> datasets, models, transforms</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> copy</span><br><span class="line"></span><br><span class="line">plt.ion()   <span class="comment"># interactive mode</span></span><br></pre></td></tr></table></figure>
+<h3 id="Load-data"><a href="#Load-data" class="headerlink" title="Load data"></a>Load data</h3><p>To classify ants and bees.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Data augmentation and normalization for training</span></span><br><span class="line"><span class="comment"># Just normalization for validation</span></span><br><span class="line">data_transforms = &#123;</span><br><span class="line">    <span class="string">'train'</span>: transforms.Compose([</span><br><span class="line">        transforms.RandomResizedCrop(<span class="number">224</span>),</span><br><span class="line">        transforms.RandomHorizontalFlip(),</span><br><span class="line">        transforms.ToTensor(),</span><br><span class="line">        transforms.Normalize([<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>], [<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line">    ]),</span><br><span class="line">    <span class="string">'val'</span>: transforms.Compose([</span><br><span class="line">        transforms.Resize(<span class="number">256</span>),</span><br><span class="line">        transforms.CenterCrop(<span class="number">224</span>),</span><br><span class="line">        transforms.ToTensor(),</span><br><span class="line">        transforms.Normalize([<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>], [<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line">    ]),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data_dir = <span class="string">'data/hymenoptera_data'</span></span><br><span class="line">image_datasets = &#123;x: datasets.ImageFolder(os.path.join(data_dir, x),</span><br><span class="line">                                          data_transforms[x])</span><br><span class="line">                  <span class="keyword">for</span> x <span class="keyword">in</span> [<span class="string">'train'</span>, <span class="string">'val'</span>]&#125;</span><br><span class="line">dataloaders = &#123;x: torch.utils.data.DataLoader(image_datasets[x], batch_size=<span class="number">4</span>,</span><br><span class="line">                                             shuffle=<span class="keyword">True</span>, num_workers=<span class="number">4</span>)</span><br><span class="line">              <span class="keyword">for</span> x <span class="keyword">in</span> [<span class="string">'train'</span>, <span class="string">'val'</span>]&#125;</span><br><span class="line">dataset_sizes = &#123;x: len(image_datasets[x]) <span class="keyword">for</span> x <span class="keyword">in</span> [<span class="string">'train'</span>, <span class="string">'val'</span>]&#125;</span><br><span class="line">class_names = image_datasets[<span class="string">'train'</span>].classes</span><br><span class="line"></span><br><span class="line">device = torch.device(<span class="string">"cuda:0"</span> <span class="keyword">if</span> torch.cuda.is_available() <span class="keyword">else</span> <span class="string">"cpu"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">imshow</span><span class="params">(inp, title=None)</span>:</span></span><br><span class="line">    <span class="string">"""Imshow for Tensor."""</span></span><br><span class="line">    inp = inp.numpy().transpose((<span class="number">1</span>, <span class="number">2</span>, <span class="number">0</span>))</span><br><span class="line">    mean = np.array([<span class="number">0.485</span>, <span class="number">0.456</span>, <span class="number">0.406</span>])</span><br><span class="line">    std = np.array([<span class="number">0.229</span>, <span class="number">0.224</span>, <span class="number">0.225</span>])</span><br><span class="line">    inp = std * inp + mean</span><br><span class="line">    inp = np.clip(inp, <span class="number">0</span>, <span class="number">1</span>)</span><br><span class="line">    plt.imshow(inp)</span><br><span class="line">    <span class="keyword">if</span> title <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">        plt.title(title)</span><br><span class="line">    plt.pause(<span class="number">0.001</span>)  <span class="comment"># pause a bit so that plots are updated</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Get a batch of training data</span></span><br><span class="line">inputs, classes = next(iter(dataloaders[<span class="string">'train'</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Make a grid from batch</span></span><br><span class="line">out = torchvision.utils.make_grid(inputs)</span><br><span class="line"></span><br><span class="line">imshow(out, title=[class_names[x] <span class="keyword">for</span> x <span class="keyword">in</span> classes])</span><br></pre></td></tr></table></figure>
+<h3 id="Train-the-model"><a href="#Train-the-model" class="headerlink" title="Train the model"></a>Train the model</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_model</span><span class="params">(model, criterion, optimizer, scheduler, num_epochs=<span class="number">25</span>)</span>:</span></span><br><span class="line">    since = time.time()</span><br><span class="line"></span><br><span class="line">    best_model_wts = copy.deepcopy(model.state_dict())</span><br><span class="line">    best_acc = <span class="number">0.0</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> epoch <span class="keyword">in</span> range(num_epochs):</span><br><span class="line">        print(<span class="string">'Epoch &#123;&#125;/&#123;&#125;'</span>.format(epoch, num_epochs - <span class="number">1</span>))</span><br><span class="line">        print(<span class="string">'-'</span> * <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Each epoch has a training and validation phase</span></span><br><span class="line">        <span class="keyword">for</span> phase <span class="keyword">in</span> [<span class="string">'train'</span>, <span class="string">'val'</span>]:</span><br><span class="line">            <span class="keyword">if</span> phase == <span class="string">'train'</span>:</span><br><span class="line">                scheduler.step()</span><br><span class="line">                model.train()  <span class="comment"># Set model to training mode</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                model.eval()   <span class="comment"># Set model to evaluate mode</span></span><br><span class="line"></span><br><span class="line">            running_loss = <span class="number">0.0</span></span><br><span class="line">            running_corrects = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># Iterate over data.</span></span><br><span class="line">            <span class="keyword">for</span> inputs, labels <span class="keyword">in</span> dataloaders[phase]:</span><br><span class="line">                inputs = inputs.to(device)</span><br><span class="line">                labels = labels.to(device)</span><br><span class="line"></span><br><span class="line">                <span class="comment"># zero the parameter gradients</span></span><br><span class="line">                optimizer.zero_grad()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># forward</span></span><br><span class="line">                <span class="comment"># track history if only in train</span></span><br><span class="line">                <span class="keyword">with</span> torch.set_grad_enabled(phase == <span class="string">'train'</span>):</span><br><span class="line">                    outputs = model(inputs)</span><br><span class="line">                    _, preds = torch.max(outputs, <span class="number">1</span>)</span><br><span class="line">                    loss = criterion(outputs, labels)</span><br><span class="line"></span><br><span class="line">                    <span class="comment"># backward + optimize only if in training phase</span></span><br><span class="line">                    <span class="keyword">if</span> phase == <span class="string">'train'</span>:</span><br><span class="line">                        loss.backward()</span><br><span class="line">                        optimizer.step()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># statistics</span></span><br><span class="line">                running_loss += loss.item() * inputs.size(<span class="number">0</span>)</span><br><span class="line">                running_corrects += torch.sum(preds == labels.data)</span><br><span class="line"></span><br><span class="line">            epoch_loss = running_loss / dataset_sizes[phase]</span><br><span class="line">            epoch_acc = running_corrects.double() / dataset_sizes[phase]</span><br><span class="line"></span><br><span class="line">            print(<span class="string">'&#123;&#125; Loss: &#123;:.4f&#125; Acc: &#123;:.4f&#125;'</span>.format(</span><br><span class="line">                phase, epoch_loss, epoch_acc))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># deep copy the model</span></span><br><span class="line">            <span class="keyword">if</span> phase == <span class="string">'val'</span> <span class="keyword">and</span> epoch_acc &gt; best_acc:</span><br><span class="line">                best_acc = epoch_acc</span><br><span class="line">                best_model_wts = copy.deepcopy(model.state_dict())</span><br><span class="line"></span><br><span class="line">        print()</span><br><span class="line"></span><br><span class="line">    time_elapsed = time.time() - since</span><br><span class="line">    print(<span class="string">'Training complete in &#123;:.0f&#125;m &#123;:.0f&#125;s'</span>.format(</span><br><span class="line">        time_elapsed // <span class="number">60</span>, time_elapsed % <span class="number">60</span>))</span><br><span class="line">    print(<span class="string">'Best val Acc: &#123;:4f&#125;'</span>.format(best_acc))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># load best model weights</span></span><br><span class="line">    model.load_state_dict(best_model_wts)</span><br><span class="line">    <span class="keyword">return</span> model</span><br></pre></td></tr></table></figure>
+<h3 id="Predictions"><a href="#Predictions" class="headerlink" title="Predictions"></a>Predictions</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">visualize_model</span><span class="params">(model, num_images=<span class="number">6</span>)</span>:</span></span><br><span class="line">    was_training = model.training</span><br><span class="line">    model.eval()</span><br><span class="line">    images_so_far = <span class="number">0</span></span><br><span class="line">    fig = plt.figure()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> i, (inputs, labels) <span class="keyword">in</span> enumerate(dataloaders[<span class="string">'val'</span>]):</span><br><span class="line">            inputs = inputs.to(device)</span><br><span class="line">            labels = labels.to(device)</span><br><span class="line"></span><br><span class="line">            outputs = model(inputs)</span><br><span class="line">            _, preds = torch.max(outputs, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(inputs.size()[<span class="number">0</span>]):</span><br><span class="line">                images_so_far += <span class="number">1</span></span><br><span class="line">                ax = plt.subplot(num_images//<span class="number">2</span>, <span class="number">2</span>, images_so_far)</span><br><span class="line">                ax.axis(<span class="string">'off'</span>)</span><br><span class="line">                ax.set_title(<span class="string">'predicted: &#123;&#125;'</span>.format(class_names[preds[j]]))</span><br><span class="line">                imshow(inputs.cpu().data[j])</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> images_so_far == num_images:</span><br><span class="line">                    model.train(mode=was_training)</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">        model.train(mode=was_training)</span><br></pre></td></tr></table></figure>
+<h3 id="Finetuning-the-convnet"><a href="#Finetuning-the-convnet" class="headerlink" title="Finetuning the convnet"></a>Finetuning the convnet</h3><p>Load a pretrained model and reset final fully connected layer.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">model_ft = models.resnet18(pretrained=<span class="keyword">True</span>)</span><br><span class="line">num_ftrs = model_ft.fc.in_features</span><br><span class="line">model_ft.fc = nn.Linear(num_ftrs, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">model_ft = model_ft.to(device)</span><br><span class="line"></span><br><span class="line">criterion = nn.CrossEntropyLoss()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Observe that all parameters are being optimized</span></span><br><span class="line">optimizer_ft = optim.SGD(model_ft.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decay LR by a factor of 0.1 every 7 epochs</span></span><br><span class="line">exp_lr_scheduler = lr_scheduler.StepLR(optimizer_ft, step_size=<span class="number">7</span>, gamma=<span class="number">0.1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model_ft = train_model(model_ft, criterion, optimizer_ft, exp_lr_scheduler,</span><br><span class="line">                       num_epochs=<span class="number">25</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="ConvNet-as-fixed-feature-extractor"><a href="#ConvNet-as-fixed-feature-extractor" class="headerlink" title="ConvNet as fixed feature extractor"></a>ConvNet as fixed feature extractor</h3><p>Here, we need to freeze all the network except the final layer. We need to set <code>requires_grad == False</code> to freeze the parameters so that the gradients are not computed in <code>backward()</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">model_conv = torchvision.models.resnet18(pretrained=<span class="keyword">True</span>)</span><br><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> model_conv.parameters():</span><br><span class="line">    param.requires_grad = <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Parameters of newly constructed modules have requires_grad=True by default</span></span><br><span class="line">num_ftrs = model_conv.fc.in_features</span><br><span class="line">model_conv.fc = nn.Linear(num_ftrs, <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">model_conv = model_conv.to(device)</span><br><span class="line"></span><br><span class="line">criterion = nn.CrossEntropyLoss()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Observe that only parameters of final layer are being optimized as</span></span><br><span class="line"><span class="comment"># opposed to before.</span></span><br><span class="line">optimizer_conv = optim.SGD(model_conv.fc.parameters(), lr=<span class="number">0.001</span>, momentum=<span class="number">0.9</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Decay LR by a factor of 0.1 every 7 epochs</span></span><br><span class="line">exp_lr_scheduler = lr_scheduler.StepLR(optimizer_conv, step_size=<span class="number">7</span>, gamma=<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">model_conv = train_model(model_conv, criterion, optimizer_conv,</span><br><span class="line">                         exp_lr_scheduler, num_epochs=<span class="number">25</span>)</span><br></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/03/08/hello-pytorch-2/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/06/hello-pytorch/" class="archive-article-date">
-  	<time datetime="2019-03-06T05:04:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/06/hello-pytorch/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hello-pytorch</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/06/hello-pytorch/">hello-pytorch</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/04/hello-golang/" class="archive-article-date">
-  	<time datetime="2019-03-04T03:21:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/04/hello-golang/">hello-golang</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -243,8 +289,8 @@
 	var yiliaConfig = {
 		mathjax: [object Object],
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
